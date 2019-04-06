@@ -7,51 +7,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Admin View</title>
+<title>TFGView</title>
 </head>
 <body>
-<shiro:user>
+
+	
+   	<shiro:user>
     Welcome back <shiro:principal />! Click <a href="LogoutServlet">here</a> to logout.
-</shiro:user>
-<hr>
-	<h2>Vista de administrador</h2>
-	<shiro:lacksRole name="admin">
-	No tienes permiso para ver el contenido de esta página
-</shiro:lacksRole>
-	<shiro:hasRole name="admin">
-		<h3>Crear profesor nuevo</h3>
-		<form action="CreateProfessorServlet" method="post">
-			<p>
-				Nombre: <input type="text" name="name" />
-			</p>
-			<p>
-				Email: <input type="text" name="email" />
-			</p>
-			<p>
-				Password: <input type="password" name="password" />
-			</p>
-			<p>
-				<button type="submit">Crear profesor</button>
-			</p>
-		</form>
-		
-		<h3>Listado de profesores</h3>
-		<table border="1">
-			<tr>
-				<th>Nombre</th>
-				<th>Email</th>
-				<th>TFGs</th>
-			</tr>
-			<c:forEach items="${professor_list}" var="prof">
-				<tr>
-					<td>${prof.name }</td>
-					<td>${prof.email }</td>
-					<td>${fn:length(prof.advisedTFGs) }</td>
-				</tr>
-			</c:forEach>
-		</table>
-		
-		<h3>Listado de tfgs</h3>
+	<h2 style="color: blue">Tus TFGs</h2>
+	</shiro:user>
+
 		<table border="1">
 			<tr>
 				<th>Título</th>
@@ -63,7 +28,7 @@
 				<th>Memoria</th>
 				<th>Acción requerida</th>
 			</tr>
-			<c:forEach items="${tfg_list}" var="tfgi">
+			<c:forEach items="${professor.getAdvisedTFGs()}" var="tfgi"> <!-- metodo de professor -->
 				<tr>
 					<td>${tfgi.title }</td>
 					<td>${tfgi.email }</td>
@@ -77,8 +42,8 @@
 								<button type="submit">Descargar</button>
 							</form>
 						</c:if></td>
-					<td><c:if test="${tfgi.status == 2}">
-							<form action="Form3SecretaryServlet" method="post">
+					<td><c:if test="${tfgi.status == 1}">
+							<form action="Form2ProfessorServlet" method="post">
 								<input type="hidden" name="email" value="${tfgi.email}" />
 								<button type="submit">Aceptar tfg</button>
 							</form>
@@ -86,9 +51,6 @@
 				</tr>
 			</c:forEach>
 		</table>
-	</shiro:hasRole>
-	
-	
 	
 </body>
 </html>

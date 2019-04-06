@@ -20,14 +20,10 @@ private String password;
 private String name;
 private String title;
 private int status;
-
+private double grade;
 
 @Lob
 private byte[] document;
- 
-
-
-private double grade;
 
 @ManyToOne
 private Professor advisor;

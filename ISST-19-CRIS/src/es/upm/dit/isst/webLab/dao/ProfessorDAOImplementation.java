@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import es.upm.dit.isst.webLab.model.Professor;
 import es.upm.dit.isst.webLab.model.TFG;
 
+// http://www.java2s.com/Code/Java/Hibernate/SimpleDaoLoad.htm   - un ejemplo profesional
+
 public class ProfessorDAOImplementation implements ProfessorDAO{
 	private static ProfessorDAOImplementation instancia = null;
 	private ProfessorDAOImplementation() {}

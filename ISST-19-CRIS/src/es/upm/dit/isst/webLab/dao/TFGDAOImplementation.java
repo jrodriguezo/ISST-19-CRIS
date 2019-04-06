@@ -74,7 +74,7 @@ public class TFGDAOImplementation implements TFGDAO {
 	public Collection<TFG> readAll() {
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
-		Collection<TFG> tfgs = session.createQuery( "from TFG" ).list(); //ese from no se si esta bien
+		Collection<TFG> tfgs = session.createQuery( "from TFG" ).list(); 
 		session.getTransaction().commit();
 		session.close();
 		return tfgs;

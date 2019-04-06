@@ -14,6 +14,8 @@ import org.apache.shiro.subject.Subject;
 
 import es.upm.dit.isst.webLab.dao.ProfessorDAO;
 import es.upm.dit.isst.webLab.dao.ProfessorDAOImplementation;
+import es.upm.dit.isst.webLab.dao.TFGDAO;
+import es.upm.dit.isst.webLab.dao.TFGDAOImplementation;
 
 @WebServlet({ "/LoginServlet", "/" })
 public class LoginServlet extends HttpServlet {
