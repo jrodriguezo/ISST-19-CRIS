@@ -20,14 +20,17 @@ import es.upm.dit.isst.webLab.model.TFG;
  * Servlet implementation class Form4TFGServlet
  */
 
+
 @WebServlet("/Form4TFGServlet")
 @MultipartConfig //obligatorio para este tipo de inputs
 public class Form4TFGServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String email = req.getParameter("email");
 		TFGDAO tdao = TFGDAOImplementation.getInstance();
-		TFG tfg = tdao.read(req.getParameter("email")); //cojo el email
-
+		TFG tfg = tdao.read(email); //cojo el email
+		System.out.println("parametro form4servlet" + " "+email);
+		System.out.println(tfg);
 		//imports java.io 
 		Part filePart = req.getPart("file");
 		InputStream fileContent = filePart.getInputStream();
@@ -38,7 +41,7 @@ public class Form4TFGServlet extends HttpServlet {
 		tfg.setStatus(4);
 		tdao.update(tfg);
 
-		resp.sendRedirect( req.getContextPath() + "/TFGServlet");
+		resp.sendRedirect( req.getContextPath() + "/TFGServlet?email="+email);
 	}
 
 }

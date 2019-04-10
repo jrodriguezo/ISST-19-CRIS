@@ -28,7 +28,7 @@
 				<th>Memoria</th>
 				<th>Acción requerida</th>
 			</tr>
-			<c:forEach items="${professor.getAdvisedTFGs()}" var="tfgi"> <!-- metodo de professor -->
+			<c:forEach items="${professor.advisedTFGs}" var="tfgi"> <!-- metodo de professor -->
 				<tr>
 					<td>${tfgi.title }</td>
 					<td>${tfgi.email }</td>
@@ -45,6 +45,7 @@
 					<td><c:if test="${tfgi.status == 1}">
 							<form action="Form2ProfessorServlet" method="post">
 								<input type="hidden" name="email" value="${tfgi.email}" />
+								<input type="hidden" name="emailTutor" value="${professor.email}" />
 								<button type="submit">Aceptar tfg</button>
 							</form>
 						</c:if></td>

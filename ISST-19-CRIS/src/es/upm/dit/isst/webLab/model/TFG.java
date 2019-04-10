@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+//To delete whole dataset: DELETE FROM TFG; as input in h2database
 
 @Entity
 public class TFG implements Serializable {

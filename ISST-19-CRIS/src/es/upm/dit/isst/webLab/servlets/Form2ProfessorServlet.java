@@ -25,11 +25,14 @@ import es.upm.dit.isst.webLab.model.TFG;
 public class Form2ProfessorServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String email = req.getParameter("email");
+		String emailTutor = req.getParameter("emailTutor");
 		TFGDAO tdao = TFGDAOImplementation.getInstance();
-		TFG tfg = tdao.read(req.getParameter("email")); //cojo el email
+		TFG tfg = tdao.read(email); //cojo el email
 		tfg.setStatus(2);
 		tdao.update(tfg);
-		resp.sendRedirect( req.getContextPath() + "/ProfessorServlet");
+		resp.sendRedirect( req.getContextPath() + "/ProfessorServlet?email=" + emailTutor);
+
 	}
 
 }

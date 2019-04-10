@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.hibernate.Session;
 
+import es.upm.dit.isst.webLab.model.Professor;
 import es.upm.dit.isst.webLab.model.TFG;
 
 public class TFGDAOImplementation implements TFGDAO {
@@ -31,12 +32,18 @@ public class TFGDAOImplementation implements TFGDAO {
 	
 	@Override
 	public TFG read(String email) {
+			TFG tfg = null;
 			Session session = SessionFactoryService.get().openSession();
-			session.beginTransaction();
-			TFG tfg = session.load( TFG.class, email );
-			session.getTransaction().commit();
-			session.close();
-			return tfg;
+			try {
+				session.beginTransaction();
+				tfg = session.load( TFG.class, email );
+				session.getTransaction().commit();
+			} catch (Exception e) {
+				
+			} finally {
+				session.close();
+				return tfg;
+			}
 	}
 	
 	

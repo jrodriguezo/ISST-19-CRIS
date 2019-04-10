@@ -23,10 +23,10 @@ import es.upm.dit.isst.webLab.model.TFG;
 public class ProfessorServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		String email = req.getParameter("email");
 		ProfessorDAO pdao = ProfessorDAOImplementation.getInstance();
-		req.getSession().setAttribute( "professor", pdao.read(req.getParameter("email")) );
-		
+		req.getSession().setAttribute( "professor", pdao.read(email) );
+		System.out.println("parametro"+ email);
 		getServletContext().getRequestDispatcher( "/ProfessorView.jsp" ).forward( req, resp );
 	}
 	

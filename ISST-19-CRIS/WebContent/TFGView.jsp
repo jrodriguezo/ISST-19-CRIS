@@ -36,13 +36,14 @@
 					<td>${tfg.status }</td>
 					<td><c:if test="${tfg.status > 3}">
 							<form action="ServeFileServlet" method="get">
-								<input type="hidden" name="email" value="${tfgi.email}" />
+								<input type="hidden" name="email" value="${tfg.email}" />
 								<button type="submit">Descargar</button>
 							</form>
 						</c:if></td>
 					<td><c:if test="${tfg.status == 3}">
 							<form action="Form4TFGServlet" method="post" enctype="multipart/form-data">
-							    <input type="file" name="file" />
+								<input type="hidden" name="email" value="${tfg.email}" />
+   								<input type="file" name="file"/>
 								<button type="submit">Subir memoria</button>
 							</form>
 						</c:if></td>

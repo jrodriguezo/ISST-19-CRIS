@@ -32,15 +32,25 @@ public class ProfessorDAOImplementation implements ProfessorDAO{
 		}
 		
 	}
+    
+
+	@SuppressWarnings("finally")
 	@Override
 	public Professor read(String email) {
+		Professor prof = null;
 		Session session = SessionFactoryService.get().openSession();
-		session.beginTransaction();
-		Professor prof = session.load( Professor.class, email );
-		session.getTransaction().commit();
-		session.close();
-		return prof;
+		try {
+			session.beginTransaction(); 
+			prof = session.load( Professor.class, email ); 
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			
+		} finally {
+			session.close();
+			return prof;
+		}
 	}
+	
 	@Override
 	public void update(Professor professor) {
 		Session session = SessionFactoryService.get().openSession();

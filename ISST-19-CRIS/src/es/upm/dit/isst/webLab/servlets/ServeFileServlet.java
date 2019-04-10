@@ -17,9 +17,11 @@ import es.upm.dit.isst.webLab.model.TFG;
 @WebServlet("/ServeFileServlet")
 public class ServeFileServlet extends HttpServlet {
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String email = req.getParameter("email");
 		TFGDAO tdao = TFGDAOImplementation.getInstance();
-		TFG tfg = tdao.read(req.getParameter("email")); //cojo el email
+		TFG tfg = tdao.read(email); //cojo el email
+		System.out.println("parametro ServeFlisServlet"+email);
 		resp.setContentLength(tfg.getDocument().length);
 		resp.getOutputStream().write(tfg.getDocument());
 	}
