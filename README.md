@@ -1,5 +1,10 @@
 # ISST-19-CRIS
-TFG - Professor: client-server implemented in Java and Tomcat9
+TFG-Professor: It consists of the process of carrying out a tfg.
 
-// pending revision errors:
- Methods fails to do 'sendRedirects' - problem with id
+Regarding code:
+
+- Client-server implemented in JavaEE and Tomcat9.
+- This program has implemented methods to assign roles in login form.
+- DAO implementations.
+
+
