@@ -1,5 +1,6 @@
 # ISST-19-CRIS
-TFG-Professor: It consists of the process of carrying out a tfg.
+
+Application for the typical management of a Final Degree Project, involving a teacher-student.
 
 Regarding code:
 
